@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-novo-animal',
   templateUrl: './novo-animal.component.html',
-  styleUrls: ['./novo-animal.component.scss']
+  styleUrls: ['./novo-animal.component.scss'],
 })
 export class NovoAnimalComponent implements OnInit {
+  formularioAnimal!: FormGroup;
+  file!: File;
+  preview!: string;
+  percentualConcluido = 0;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  upload() {}
+
+  gravaArquivo(arquivo: File) {}
 }
