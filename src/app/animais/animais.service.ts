@@ -28,7 +28,7 @@ export class AnimaisService {
 
   curtir(ID: number): Observable<boolean> {
     return this.http
-      .post(`${API}/photos/${ID}/likes`, {}, { observe: 'response' })
+      .post(`${API}/photos/${ID}/like`, {}, { observe: 'response' })
       .pipe(
         map(() => true),
         catchError((error) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Animal } from '../animais';
 import { AnimaisService } from '../animais.service';
@@ -15,7 +15,8 @@ export class DetalheAnimalComponent implements OnInit {
   // activated route to fetch the params id
   constructor(
     private animaisService: AnimaisService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,5 +24,22 @@ export class DetalheAnimalComponent implements OnInit {
     this.animalID = this.activatedRoute.snapshot.params['id'];
     // search for animal id for the animal details
     this.animal$ = this.animaisService.buscaPorID(this.animalID);
+  }
+
+  curtir() {
+    this.animaisService.curtir(this.animalID).subscribe((like) => {
+      if (like) {
+        this.animal$ = this.animaisService.buscaPorID(this.animalID);
+      }
+    });
+  }
+
+  excluir() {
+    this.animaisService.excluiAnimal(this.animalID).subscribe(
+      () => {
+        this.router.navigate(['/animais/']);
+      },
+      (error) => console.log(error)
+    );
   }
 }
