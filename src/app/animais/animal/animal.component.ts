@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-const apiURL = 'htto://localhost:3000';
+const API = environment.apiURL;
 
 @Component({
   selector: 'app-animal',
@@ -17,7 +18,7 @@ export class AnimalComponent implements OnInit {
     if (url.startsWith('data')) {
       this.urlOriginal = url;
     } else {
-      this.urlOriginal = `${apiURL}/imgs/${url}`;
+      this.urlOriginal = `${API}/imgs/${url}`;
     }
   }
 

@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { TokenService } from '../autenticacao/token.service';
 import { Animais } from './animais';
 
-const apiURL = 'http://localhost:3000';
+const API = environment.apiURL;
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class AnimaisService {
     const token = this.tokenService.retornaToken();
     // send token through headers - Angular Headers
     const headers = new HttpHeaders().append('x-access-token', token);
-    return this.http.get<Animais>(`${apiURL}/${nomeDoUsuario}/photos`, {
+    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`, {
       headers,
     });
   }
