@@ -35,11 +35,11 @@ export class DetalheAnimalComponent implements OnInit {
   }
 
   excluir() {
-    this.animaisService.excluiAnimal(this.animalID).subscribe(
-      () => {
+    this.animaisService.excluiAnimal(this.animalID).subscribe({
+      next: () => {
         this.router.navigate(['/animais/']);
       },
-      (error) => console.log(error)
-    );
+      error: (error) => console.log(error),
+    });
   }
 }
