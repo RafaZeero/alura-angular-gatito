@@ -6,10 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AutenticacaoService {
+  apiUrl = 'http://localhost:3000/user/login';
   constructor(private http: HttpClient) {}
 
+  // authentication from form to connect to api
   autenticar(usuario: string, senha: string): Observable<any> {
-    return this.http.post('http://localhost:3000/user/login', {
+    return this.http.post(this.apiUrl, {
       userName: usuario,
       password: senha,
     });

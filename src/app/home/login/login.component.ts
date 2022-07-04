@@ -19,8 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
+    // authenticate user and pwd
     this.autenticacaoService.autenticar(this.usuario, this.senha).subscribe(
       () => {
+        // redirect user to page 'animais'
         this.router.navigate(['animais']);
       },
       (err) => console.log(err)
