@@ -1,0 +1,14 @@
+<!-- Message to empty animal list -->
+<p class="text-center text-muted" *ngIf="!animais.length">Desculpe, não há animais.</p>
+
+<!-- Animal list -->
+<div class="row">
+  <div class="col-4" *ngFor="let animal of animais">
+    <a [routerLink]="['/animais',animal.id]"></a>
+    <app-cartao>
+      <app-animal [url]="animal.url" [descricao]="animal.description"></app-animal>
+      <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">{{animal.likes}}</i>
+      <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2">{{animal.comments}}</i>
+    </app-cartao>
+  </div>
+</div>
