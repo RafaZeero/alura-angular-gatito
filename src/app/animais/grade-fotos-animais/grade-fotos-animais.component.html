@@ -1,5 +1,6 @@
 <!-- Message to empty animal list -->
-<p class="text-center text-muted" *ngIf="!animais.length">Desculpe, não há animais.</p>
+<!-- !animais?.length ~> to avoid error in browser -->
+<p class="text-center text-muted" *ngIf="!animais?.length">Desculpe, não há animais.</p>
 
 <!-- Animal list -->
 <div class="row">
