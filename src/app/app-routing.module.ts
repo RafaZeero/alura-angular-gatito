@@ -12,6 +12,12 @@ const routes: Routes = [
     // lazy loading home module
     loadChildren: async () => (await import('./home/home.module')).HomeModule,
   },
+  {
+    path: 'animais',
+    // lazy loading animais module
+    loadChildren: async () =>
+      (await import('./animais/animais.module')).AnimaisModule,
+  },
 ];
 
 @NgModule({
