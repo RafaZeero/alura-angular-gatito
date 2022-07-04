@@ -14,22 +14,10 @@ export class AnimaisService {
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
-    // fetch token from current User
-    const token = this.tokenService.retornaToken();
-    // send token through headers - Angular Headers
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`, {
-      headers,
-    });
+    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`);
   }
 
   buscaPorID(ID: number): Observable<Animal> {
-    // fetch token
-    const token = this.tokenService.retornaToken();
-
-    // send headers
-    const headers = new HttpHeaders().append('x-access-token', token);
-
-    return this.http.get<Animal>(`${API}/photos/${ID}`, { headers });
+    return this.http.get<Animal>(`${API}/photos/${ID}`);
   }
 }
